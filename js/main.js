@@ -76,7 +76,7 @@
       // $this.find('.dropdown-menu').removeClass('animated-fast fadeInUp show');
       $this.find(".dropdown-menu").removeClass("show");
       // }, 100);
-    }
+    },
   );
 
   $("#dropdown04").on("show.bs.dropdown", function () {
@@ -141,12 +141,12 @@
                 number: num,
                 numberStep: comma_separator_number_step,
               },
-              7000
+              7000,
             );
           });
         }
       },
-      { offset: "95%" }
+      { offset: "95%" },
     );
   };
   counter();
@@ -180,13 +180,13 @@
                   el.removeClass("item-animate");
                 },
                 k * 50,
-                "easeInOutExpo"
+                "easeInOutExpo",
               );
             });
           }, 100);
         }
       },
-      { offset: "95%" }
+      { offset: "95%" },
     );
   };
   contentWayPoint();
@@ -234,7 +234,7 @@
           scrollTop: $(".goto-here").offset().top,
         },
         500,
-        "easeInOutExpo"
+        "easeInOutExpo",
       );
 
       return false;
@@ -252,13 +252,13 @@
         if (value <= 50) {
           right.css(
             "transform",
-            "rotate(" + percentageToDegrees(value) + "deg)"
+            "rotate(" + percentageToDegrees(value) + "deg)",
           );
         } else {
           right.css("transform", "rotate(180deg)");
           left.css(
             "transform",
-            "rotate(" + percentageToDegrees(value - 50) + "deg)"
+            "rotate(" + percentageToDegrees(value - 50) + "deg)",
           );
         }
       }
@@ -268,28 +268,25 @@
       return (percentage / 100) * 360;
     }
   });
-  // Disable Right-Click
-  document.addEventListener("contextmenu", function (e) {
-    e.preventDefault();
-  });
+  // Right-click and keyboard shortcuts are now enabled for development
+  // Uncomment below to disable in production:
 
-  // Disable Keyboard Shortcuts
-  document.addEventListener("keydown", function (e) {
-    // F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+S
-    if (
-      e.keyCode === 123 || // F12
-      (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || // Ctrl+Shift+I or J
-      (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83)) // Ctrl+U or Ctrl+S
-    ) {
-      e.preventDefault();
-    }
-  });
+  // document.addEventListener("contextmenu", function (e) {
+  //   e.preventDefault();
+  // });
+
+  // document.addEventListener("keydown", function (e) {
+  //   if (
+  //     e.keyCode === 123 || // F12
+  //     (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || // Ctrl+Shift+I or J
+  //     (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83)) // Ctrl+U or Ctrl+S
+  //   ) {
+  //     e.preventDefault();
+  //   }
+  // });
   // ====Form Submit =====
-  // Initialize EmailJS (replace 'YOUR_USER_ID' with your EmailJS user ID)
-  // Initialize EmailJS with your User ID
-  emailjs.init("gChdDtHTjemssVhWr");
+  // Using FormSubmit.co - Free form backend service
 
-  // Form submission event listener
   document
     .getElementById("contactForm")
     .addEventListener("submit", function (event) {
@@ -298,7 +295,7 @@
       // Get form values
       var name = document.getElementById("name").value;
       var email = document.getElementById("email").value;
-      var service = document.getElementById("service").value; // Using ID for service
+      var service = document.getElementById("service").value;
       var message = document.getElementById("message").value;
 
       // Validate form fields (simple check)
@@ -320,38 +317,59 @@
         showConfirmButton: false, // Hide the confirm button
       });
 
-      // Create an object with form data to send to the template
-      var templateParams = {
-        name: name,
-        email: email,
-        service: service,
-        message: message,
-      };
+      // Create FormData object
+      var formData = new FormData();
+      formData.append("name", name);
+      formData.append("email", email);
+      formData.append("service", service);
+      formData.append("message", message);
 
-      // Send email using EmailJS
-      emailjs.send("service_fsye238", "template_ci4fmoi", templateParams).then(
-        function (response) {
-          loadingAlert.close();
-          // If email sent successfully
-          Swal.fire({
-            icon: "success",
-            title: "Thank You!",
-            text: "Your message has been sent successfully!",
-          }).then(function () {
-            // Optionally reset the form
-            document.getElementById("contactForm").reset();
-          });
+      // Send using fetch API to FormSubmit
+      fetch("https://formsubmit.co/ajax/Support@assistmehub.com", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
         },
-        function (error) {
+      })
+        .then((response) => response.json())
+        .then((data) => {
           loadingAlert.close();
-          // If there's an error
+
+          // Check if form needs activation
+          if (
+            data.success === "false" &&
+            data.message &&
+            data.message.includes("Activation")
+          ) {
+            Swal.fire({
+              icon: "info",
+              title: "Almost There! 📧",
+              html: "We've sent an activation email to <strong>Support@assistmehub.com</strong><br><br>Please check your email and click the 'Activate Form' link to complete setup.<br><br><small>Check spam folder if you don't see it.</small>",
+              confirmButtonText: "Got it!",
+            }).then(function () {
+              document.getElementById("contactForm").reset();
+            });
+          } else if (data.success === "true" || data.success === true) {
+            Swal.fire({
+              icon: "success",
+              title: "Thank You!",
+              text: "Your message has been sent successfully!",
+            }).then(function () {
+              document.getElementById("contactForm").reset();
+            });
+          } else {
+            throw new Error("Form submission failed");
+          }
+        })
+        .catch((error) => {
+          loadingAlert.close();
           Swal.fire({
             icon: "error",
             title: "Oops...",
             text: "Something went wrong. Please try again.",
           });
-          console.error("Error sending email:", error);
-        }
-      );
+          console.error("Error sending form:", error);
+        });
     });
 })(jQuery);
