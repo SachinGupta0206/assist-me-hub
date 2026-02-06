@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <title>AssistMe</title>
@@ -14,10 +14,11 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script
+    <!-- EmailJS not needed anymore, using FormSubmit.co -->
+    <!-- <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
-    ></script>
+    ></script> -->
 
     <link
       rel="stylesheet"
@@ -38,7 +39,7 @@
     <link rel="stylesheet" href="css/flaticon.css" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body ondragstart="return false;" onselectstart="return false;">
+  <body>
     <nav
       class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
       id="ftco-navbar"
@@ -92,7 +93,7 @@
     <!-- END nav -->
     <div
       class="hero-wrap"
-      style="background-image: url('images/bg_1.jpg')"
+      style="background-image: url(&quot;images/bg_1.jpg&quot;)"
       data-stellar-background-ratio="0.5"
     >
       <div class="overlay"></div>
@@ -141,7 +142,7 @@
         <div class="row d-sm-flex text-wrapper align-items-stretch">
           <div
             class="one-half mb-md-0 mb-4 img d-flex align-self-stretch"
-            style="background-image: url('images/about.jpg')"
+            style="background-image: url(&quot;images/about.jpg&quot;)"
           ></div>
           <div
             class="one-half half-text d-flex justify-content-end align-items-center"
@@ -467,7 +468,7 @@
             class="col-md-7 text-center heading-section heading-section-white ftco-animate"
           >
             <span class="subheading">Testimonials</span>
-            <h2 class="mb-3">What Our Clients Say</h2>
+            <h2 class="mb-3">What Our Clients Says</h2>
           </div>
         </div>
         <div class="row ftco-animate">
@@ -484,16 +485,18 @@
                     <p class="mb-4">
                       AssistMe helped me reclaim 10+ hours per week. Their VA
                       understood my workflow within days and started delivering
-                      results with minimal instructions.
+                      excellent results with minimal instructions.
                     </p>
                     <div class="d-flex align-items-center">
                       <div
                         class="user-img"
-                        style="background-image: url(images/person_1.jpg)"
+                        style="background-image: url(images/Testimonial1.png)"
                       ></div>
                       <div class="pl-3">
-                        <p class="name">Emily Turner</p>
-                        <span class="position">Founder, GreenDesk Co.</span>
+                        <p class="name">Sarah Mitchell</p>
+                        <span class="position"
+                          >Founder, TechVista Solutions</span
+                        >
                       </div>
                     </div>
                   </div>
@@ -516,12 +519,12 @@
                     <div class="d-flex align-items-center">
                       <div
                         class="user-img"
-                        style="background-image: url(images/person_2.jpg)"
+                        style="background-image: url(images/Testimonial2.png)"
                       ></div>
                       <div class="pl-3">
-                        <p class="name">James Patel</p>
+                        <p class="name">Michael Anderson</p>
                         <span class="position"
-                          >Operations Lead, Skyloft Media</span
+                          >Operations Lead, Digital Innovations</span
                         >
                       </div>
                     </div>
@@ -539,18 +542,74 @@
                   <div class="text">
                     <p class="mb-4">
                       My virtual assistant from AssistMe now handles my email,
-                      calendar, and research tasks. Their quality of support is
-                      unmatched!
+                      calendar, and research tasks seamlessly. Their quality of
+                      support is truly unmatched in the industry!
                     </p>
                     <div class="d-flex align-items-center">
                       <div
                         class="user-img"
-                        style="background-image: url(images/person_3.jpg)"
+                        style="background-image: url(images/Testimonial3.png)"
                       ></div>
                       <div class="pl-3">
-                        <p class="name">Sofia Alvarez</p>
+                        <p class="name">Emily Thompson</p>
                         <span class="position"
-                          >Creative Director, Wave Studio</span
+                          >Creative Director, Brandwise Studio</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                  <div
+                    class="icon d-flex align-items-center justify-content-center"
+                  >
+                    <span class="fa fa-quote-left"></span>
+                  </div>
+                  <div class="text">
+                    <p class="mb-4">
+                      AssistMe's team is incredibly efficient and
+                      detail-oriented. They've streamlined our operations and
+                      saved us countless hours every single month.
+                    </p>
+                    <div class="d-flex align-items-center">
+                      <div
+                        class="user-img"
+                        style="background-image: url(images/Testimonial4.png)"
+                      ></div>
+                      <div class="pl-3">
+                        <p class="name">David Roberts</p>
+                        <span class="position">CEO, NextGen Enterprises</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                  <div
+                    class="icon d-flex align-items-center justify-content-center"
+                  >
+                    <span class="fa fa-quote-left"></span>
+                  </div>
+                  <div class="text">
+                    <p class="mb-4">
+                      Working with AssistMe has been a game-changer for our
+                      startup. Their virtual assistants are professional,
+                      proactive, and always deliver quality work on time.
+                    </p>
+                    <div class="d-flex align-items-center">
+                      <div
+                        class="user-img"
+                        style="background-image: url(images/Testimonial5.png)"
+                      ></div>
+                      <div class="pl-3">
+                        <p class="name">Jessica Williams</p>
+                        <span class="position"
+                          >Co-Founder, InnovateTech Labs</span
                         >
                       </div>
                     </div>
@@ -855,27 +914,17 @@
                           required
                         >
                           <option value="">Select Assistance Type</option>
-                          <option value="family-task">Family Task</option>
-                          <option value="online-research">
-                            Online Research
+                          <option value="office-administration">
+                            Office Administration
                           </option>
-                          <option value="management-task">
-                            Management Task
+                          <option value="marketing-branding">
+                            Marketing & Branding
                           </option>
-                          <option value="project-management">
-                            Project Management
+                          <option value="sales-lead-generation">
+                            Sales & Lead Generation
                           </option>
-                          <option value="writing-editing">
-                            Writing & Editing
-                          </option>
-                          <option value="multilingual">
-                            Multilingual Services
-                          </option>
-                          <option value="customer-service">
-                            Customer Service
-                          </option>
-                          <option value="executive-admin">
-                            Executive Admin
+                          <option value="technology-projects-support">
+                            Technology Projects & Support
                           </option>
                           <option value="other">Other</option>
                         </select>

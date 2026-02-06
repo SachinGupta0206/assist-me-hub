@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <title>AssistMe</title>
@@ -19,10 +19,11 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script
+    <!-- EmailJS not needed anymore, using FormSubmit.co -->
+    <!-- <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
-    ></script>
+    ></script> -->
 
     <link rel="stylesheet" href="css/animate.css" />
 
@@ -33,7 +34,7 @@
     <link rel="stylesheet" href="css/flaticon.css" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body ondragstart="return false;" onselectstart="return false;">
+  <body>
     <nav
       class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
       id="ftco-navbar"
@@ -88,7 +89,7 @@
 
     <section
       class="hero-wrap hero-wrap-2"
-      style="background-image: url('images/bg_3.jpg')"
+      style="background-image: url(&quot;images/bg_3.jpg&quot;)"
       data-stellar-background-ratio="0.5"
     >
       <div class="overlay"></div>
@@ -295,27 +296,17 @@
                           required
                         >
                           <option value="">Select Assistance Type</option>
-                          <option value="family-task">Family Task</option>
-                          <option value="online-research">
-                            Online Research
+                          <option value="office-administration">
+                            Office Administration
                           </option>
-                          <option value="management-task">
-                            Management Task
+                          <option value="marketing-branding">
+                            Marketing & Branding
                           </option>
-                          <option value="project-management">
-                            Project Management
+                          <option value="sales-lead-generation">
+                            Sales & Lead Generation
                           </option>
-                          <option value="writing-editing">
-                            Writing & Editing
-                          </option>
-                          <option value="multilingual">
-                            Multilingual Services
-                          </option>
-                          <option value="customer-service">
-                            Customer Service
-                          </option>
-                          <option value="executive-admin">
-                            Executive Admin
+                          <option value="technology-projects-support">
+                            Technology Projects & Support
                           </option>
                           <option value="other">Other</option>
                         </select>
