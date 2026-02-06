@@ -30,14 +30,17 @@
 
   var carousel = function () {
     $(".carousel-testimony").owlCarousel({
-      center: true,
-      // loop: true,
-      // autoplay: true,
-      autoplaySpeed: 2000,
-      items: 1,
+      center: false,
+      loop: true,
+      autoplay: true,
+      autoplayTimeout: 5000,
+      autoplaySpeed: 1000,
+      autoplayHoverPause: true,
+      items: 3,
       margin: 30,
       stagePadding: 0,
-      nav: false,
+      nav: true,
+      dots: true,
       navText: [
         '<span class="ion-ios-arrow-back">',
         '<span class="ion-ios-arrow-forward">',
@@ -372,4 +375,39 @@
           console.error("Error sending form:", error);
         });
     });
+
+  // Additional testimonial carousel initialization
+  $(document).ready(function () {
+    if ($(".carousel-testimony").length) {
+      console.log("Initializing testimonial carousel...");
+      $(".carousel-testimony").owlCarousel({
+        center: false,
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplaySpeed: 1000,
+        autoplayHoverPause: true,
+        items: 3,
+        margin: 30,
+        stagePadding: 0,
+        nav: true,
+        dots: true,
+        navText: [
+          '<span class="ion-ios-arrow-back"></span>',
+          '<span class="ion-ios-arrow-forward"></span>',
+        ],
+        responsive: {
+          0: {
+            items: 1,
+          },
+          600: {
+            items: 2,
+          },
+          1000: {
+            items: 3,
+          },
+        },
+      });
+    }
+  });
 })(jQuery);
